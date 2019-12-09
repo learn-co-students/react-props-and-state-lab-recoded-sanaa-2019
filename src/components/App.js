@@ -21,17 +21,15 @@ class App extends React.Component {
       }
     })}
     fetchAnimals=()=>{
-      let Url;
-      if(this.state.filters.type == 'all'){
-        Url= '/api/pets';
-      } else {
-        Url= '/api/pets?type='+this.state.filters.type;
-      }
-      fetch(Url).then(response=>response.json()).then(data=>{
+      let url;
+      if(this.state.filters.type == 'all'){url= '/api/pets' } 
+      else { url= `/api/pets?type=${this.state.filters.type}`}
+      fetch(url).then(response=>response.json())
+      .then(data=>{
         this.setState({
           data
         })
-      }).catch(error=>console.log(error));
+      })
     }
   
    AdoptPetHandle= Id => {
