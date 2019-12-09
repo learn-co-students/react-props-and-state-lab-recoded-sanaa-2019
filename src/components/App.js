@@ -29,18 +29,18 @@ class App extends React.Component {
       }
       fetch(Url).then(response=>response.json()).then(data=>{
         this.setState({
-          pets:data
+          data
         })
       }).catch(error=>console.log(error));
     }
   
    AdoptPetHandle= Id => {
-      const pet = [...this.state.pets];
+      const pets = [...this.state.pets];
       const petAdopted = pets.find(pet => pet.id === Id);
       if (petAdopted) {
         petAdopted.isAdopted = true;
-        const el = pet.indexOf(petAdopted);
-        pet[el] = petAdopted;
+        const el = pets.indexOf(petAdopted);
+        pets[el] = petAdopted;
         this.setState({
           pets
         });
